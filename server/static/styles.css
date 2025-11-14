@@ -1,0 +1,1704 @@
+/* Base styles */
+:root {
+  --ed-orange: #FFA500;
+  --dark-bg: #0a0a0a;
+  --mid-bg: #1a1a1a;
+  --light-bg: #222222;
+  --text-primary: var(--ed-orange);
+  --text-secondary: #f0f0f0;
+  --accent-blue: #3498db;
+  --accent-red: #e74c3c;
+  --border-color: #444;
+  --spacing-xs: 0.2rem;
+  --spacing-sm: 0.4rem;
+  --spacing-md: 0.6rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--dark-bg);
+  color: var(--text-primary);
+  font-family: 'Rajdhani', sans-serif;
+  line-height: 1.0;
+  padding: var(--spacing-sm);
+  font-size: 10px;
+}
+
+.container {
+  max-width: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+/* Header styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.header-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 1.2rem;
+  margin-bottom: var(--spacing-xs);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.status {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.layout-toggle {
+  display: flex;
+}
+
+/* Button styles */
+.button {
+  background-color: var(--ed-orange);
+  color: black;
+  border: none;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: 2px;
+  cursor: pointer;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+.button:hover {
+  background-color: #ffb733;
+}
+
+.button.active {
+  background-color: #ffb733;
+  box-shadow: 0 0 3px rgba(255, 165, 0, 0.5);
+}
+
+.button.small {
+  padding: 0.1rem 0.3rem;
+  font-size: 0.7rem;
+}
+
+.button.danger {
+  background-color: var(--accent-red);
+  color: white;
+}
+
+.button.danger:hover {
+  background-color: #c0392b;
+}
+
+/* Checkbox styles */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  margin-left: var(--spacing-xs);
+  font-size: 0.8rem;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkbox-custom {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background-color: black;
+  border: 1px solid var(--ed-orange);
+  border-radius: 2px;
+  margin-left: var(--spacing-xs);
+}
+
+.checkbox-container input:checked ~ .checkbox-custom {
+  background-color: var(--ed-orange);
+}
+
+.checkbox-custom:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-container input:checked ~ .checkbox-custom:after {
+  display: block;
+}
+
+.checkbox-container .checkbox-custom:after {
+  left: 4px;
+  top: 1px;
+  width: 4px;
+  height: 8px;
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox-text {
+  color: var(--ed-orange);
+}
+
+/* Selector styles */
+.selector {
+  background-color: var(--mid-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-family: 'Rajdhani', sans-serif;
+  padding: 0.1rem 0.2rem;
+  border-radius: 2px;
+  font-size: 0.8rem;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.selector:focus {
+  outline: none;
+  border-color: var(--ed-orange);
+}
+
+.selector option {
+  background-color: var(--mid-bg);
+  color: var(--text-primary);
+}
+
+.selector-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.selector-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  width: 0;
+  height: 0;
+  margin-top: -2px;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid var(--ed-orange);
+  pointer-events: none;
+}
+
+/* Layout styles */
+.layout {
+  width: 100%;
+}
+
+.top-section {
+  display: grid;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.kills-section {
+  width: 100%;
+}
+
+.targeted-section {
+  width: 100%;
+}
+
+.grid-section {
+  margin-bottom: var(--spacing-sm);
+}
+
+.summary-section {
+  width: 100%;
+}
+
+/* Table styles */
+.table-wrapper {
+  margin-bottom: var(--spacing-md);
+  background-color: var(--mid-bg);
+  border-radius: 3px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: rgba(255, 165, 0, 0.1);
+}
+
+.table-header h2 {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.page-controls {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--spacing-xs) var(--spacing-md);
+  background-color: rgba(255, 165, 0, 0.1);
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.font-controls, .pagination {
+  display: flex;
+  gap: var(--spacing-xs);
+  align-items: center;
+}
+
+.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.8rem;
+}
+
+.data-table th {
+  background-color: var(--mid-bg);
+  color: var(--text-primary);
+  font-weight: 600;
+  text-align: right;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  cursor: pointer;
+  border-bottom: 1px solid var(--border-color);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.data-table th:hover {
+  background-color: var(--light-bg);
+}
+
+.data-table td {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+.data-table tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.data-table tr:hover {
+  background-color: rgba(255, 165, 0, 0.05);
+}
+
+.footer-row {
+  font-weight: bold;
+  background-color: rgba(255, 165, 0, 0.2);
+  color: var(--text-primary);
+}
+
+/* Grid styles */
+.grid-wrapper {
+  margin-bottom: var(--spacing-md);
+  background-color: var(--mid-bg);
+  border-radius: 3px;
+  padding: var(--spacing-md);
+  border: 1px solid var(--border-color);
+}
+
+.grid-wrapper h2 {
+  margin-bottom: var(--spacing-sm);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: var(--spacing-sm);
+}
+
+.grid-item {
+  background-color: var(--light-bg);
+  border-radius: 3px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  transition: transform 0.2s ease;
+}
+
+.grid-item:hover {
+  transform: translateY(-2px);
+}
+
+
+/* Summary tables section */
+.summary-wrapper {
+  background-color: var(--mid-bg);
+  border-radius: 3px;
+  padding: var(--spacing-md);
+  border: 1px solid var(--border-color);
+}
+
+.summary-wrapper h2 {
+  margin-bottom: var(--spacing-sm);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.summary-tables {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-sm);
+}
+
+.summary-table {
+  width: 100%;
+}
+
+.summary-table h3 {
+  margin-bottom: var(--spacing-xs);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Mobile tabs */
+.tabs {
+  display: flex;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-sm);
+}
+
+.tabcontent {
+  display: none;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .header-right {
+    width: 100%;
+    margin-top: var(--spacing-sm);
+  }
+  
+  .controls {
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+  }
+  
+  .top-section {
+    grid-template-columns: 1fr;
+  }
+  
+  .page-controls {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .font-controls, .pagination {
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .summary-tables {
+    grid-template-columns: 1fr;
+  }
+}
+/* Optimized Grid and Card styles */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 0.3rem;
+  padding: 0.3rem;
+}
+
+.grid-item {
+  background-color: var(--light-bg);
+  border-radius: 2px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  transition: transform 0.15s ease;
+}
+
+.grid-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.cards {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-image {
+  height: 90px;
+  background-color: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 0;
+}
+
+.card-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.card-content {
+  padding: 0.25rem;
+}
+
+.card-title {
+  margin: 0 0 0.15rem 0;
+  font-size: 0.5rem;
+  color: var(--text-primary);
+  font-weight: 400;
+  line-height: 1.1;
+  white-space: wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-text {
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+  margin: 0 0 0.15rem 0;
+  line-height: 1;
+}
+
+/* Grid wrapper container */
+.grid-wrapper {
+  margin-bottom: 0.5rem;
+  background-color: var(--mid-bg);
+  border-radius: 3px;
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+}
+
+.grid-wrapper h2 {
+  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* More compact section headings */
+.grid-wrapper h2,
+.summary-wrapper h2,
+.table-header h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+/* Reduce space in section containers */
+.grid-wrapper,
+.summary-wrapper {
+  padding: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+/* Make the header areas more compact */
+.table-header {
+  padding: 0.2rem 0.25rem;
+}
+
+/* Remove bottom margin from headings */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  line-height: 1.1;
+}
+
+/* Adjust grid container spacing */
+.grid-container {
+  margin-top: 0.2rem;
+  padding-top: 0;
+}
+
+/* Make summary tables start closer to their heading */
+.summary-tables {
+  margin-top: 0.2rem;
+}
+
+/* For more compact section containers */
+.grid-section,
+.summary-section {
+  margin-bottom: 0.25rem;
+}
+
+/* More compact card grids */
+.grid-container {
+  gap: 0.2rem;
+  padding: 0.2rem 0;
+}
+
+/* Compact table styles */
+.summary-table {
+  margin: 0;
+  padding: 0;
+}
+
+.summary-table h3 {
+  margin: 0;
+  padding: 0.1rem 0.2rem;
+  font-size: 0.8rem;
+  background-color: rgba(255, 165, 0, 0.1);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.summary-tables {
+  gap: 0.2rem;
+  margin: 0;
+  padding: 0;
+}
+
+/* Table header cells */
+.data-table th {
+  padding: 0.1rem 0.2rem;
+  font-size: 0.75rem;
+  line-height: 2.1;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+/* Table data cells */
+.data-table td {
+  padding: 0.1rem 0.2rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+/* Footer rows */
+.footer-row td, .footer-row th {
+  padding: 0.1rem 0.2rem;
+  font-size: 0.75rem;
+  line-height: 1.1;
+}
+
+/* Remove spacing between summary table sections */
+.summary-wrapper {
+  padding: 0.2rem;
+}
+
+/* Specifically target the table header rows */
+.data-table thead tr {
+  height: auto;
+}
+
+/* Specifically target the table rows */
+.data-table tbody tr {
+  height: auto;
+}
+
+/* Override any table margin or padding */
+table {
+  margin: 0;
+  padding: 0;
+  border-spacing: 0;
+}
+
+/* Tighten vertical spacing in table cells */
+th, td {
+  vertical-align: right;
+  text-align: right;
+  line-height: 1;
+}
+/* Add these styles to styles.css */
+.power-status {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-top: 0.2rem;
+  padding: 0.2rem 0.4rem;
+  background-color: rgba(255, 165, 0, 0.1);
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.power-name {
+  font-weight: 600;
+  color: var(--ed-orange);
+}
+
+.merits-total {
+  font-weight: 500;
+}
+
+.merits-session {
+  color: #4CAF50;
+  font-weight: 600;
+}
+
+/* PowerPlay Widget Styles - Add to styles.css */
+
+:root {
+  --elite-orange: #ff7100;
+  --elite-blue: #00a2ff;
+  --elite-dark: #111215;
+  --elite-gray: #2a2c31;
+  --elite-light: #7b8288;
+}
+
+.powerplay-widget {
+  background-color: var(--mid-bg);
+  border: 1px solid var(--ed-orange);
+  border-radius: 2px;
+  box-shadow: 0 0 5px rgba(255, 165, 0, 0.3);
+  overflow: hidden;
+  font-family: 'Rajdhani', sans-serif;
+  margin-top: 0.2rem;
+}
+
+.widget-header {
+  background-color: rgba(255, 165, 0, 0.1);
+  padding: 0.3rem;
+  border-bottom: 1px solid var(--ed-orange);
+  display: flex;
+  align-items: center;
+}
+
+.power-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+  border: 1px solid var(--ed-orange);
+  border-radius: 50%;
+  background-color: var(--light-bg);
+}
+
+.power-info {
+  flex-grow: 1;
+}
+
+.power-name {
+  color: var(--ed-orange);
+  font-size: 0.85rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.power-level {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.widget-content {
+  padding: 0.3rem;
+}
+
+.merit-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 165, 0, 0.2);
+  padding-bottom: 0.3rem;
+}
+
+.merit-box {
+  text-align: center;
+  width: 48%;
+}
+
+.merit-label {
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.merit-value {
+  font-size: 0.85rem;
+  color: #fff;
+  margin-top: 0.1rem;
+}
+
+.merit-breakdown {
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 165, 0, 0.2);
+  padding-bottom: 0.3rem;
+}
+
+.breakdown-title {
+  color: var(--text-secondary);
+  font-size: 0.65rem;
+  margin-bottom: 0.3rem;
+  text-transform: uppercase;
+}
+
+.breakdown-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.2rem;
+}
+
+.activity-label {
+  width: 5rem;
+  font-size: 0.7rem;
+  color: #fff;
+}
+
+.activity-bar-container {
+  flex-grow: 1;
+  height: 0.75rem;
+  background-color: var(--elite-gray);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.activity-bar {
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.activity-bar.trading {
+  background: linear-gradient(90deg, #3EFD71 0%, #00A2FF 100%);
+}
+
+.activity-bar.bounty {
+  background: linear-gradient(90deg, #FFD700 0%, #FF7100 100%);
+}
+
+.activity-bar.combat {
+  background: linear-gradient(90deg, #FF0000 0%, #8B0000 100%);
+}
+
+.activity-bar.fortification {
+  background: linear-gradient(90deg, #800080 0%, #4B0082 100%);
+}
+
+.activity-bar.other {
+  background: linear-gradient(90deg, #888888 0%, #444444 100%);
+}
+
+.activity-value {
+  position: absolute;
+  right: 0.2rem;
+  font-size: 0.6rem;
+  color: white;
+  line-height: 0.75rem;
+  text-shadow: 0 0 2px black, 0 0 2px black;
+}
+
+.progress-section {
+  margin-bottom: 0.5rem;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.65rem;
+  margin-bottom: 0.2rem;
+}
+
+.progress-title {
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.progress-counter {
+  color: var(--ed-orange);
+}
+
+.progress-bar-outer {
+  width: 100%;
+  height: 0.6rem;
+  background-color: var(--elite-gray);
+  border-radius: 2px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 165, 0, 0.2);
+}
+
+.progress-bar-inner {
+  height: 100%;
+  background: linear-gradient(90deg, var(--ed-orange) 0%, #FFD700 100%);
+  width: 0%;
+}
+
+.widget-footer {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 0.2rem 0.3rem;
+  text-align: right;
+  font-size: 0.6rem;
+  color: var(--text-secondary);
+  border-top: 1px solid rgba(255, 165, 0, 0.1);
+}
+
+/* Animation for progress bar */
+@keyframes pulse {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { opacity: 0.8; }
+}
+
+.progress-bar-inner {
+  animation: pulse 2s infinite;
+}
+
+/* Inventory section styles for PowerPlay widget */
+.inventory-section {
+  margin-bottom: 0.5rem;
+}
+
+.inventory-title {
+  color: var(--text-secondary);
+  font-size: 0.65rem;
+  margin-bottom: 0.3rem;
+  text-transform: uppercase;
+}
+
+.inventory-list {
+  max-height: 7rem;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ed-orange) var(--elite-gray);
+}
+
+/* Elite-style scrollbar for the inventory list */
+.inventory-list::-webkit-scrollbar {
+  width: 0.3rem;
+}
+
+.inventory-list::-webkit-scrollbar-track {
+  background: var(--elite-gray); 
+}
+
+.inventory-list::-webkit-scrollbar-thumb {
+  background: var(--ed-orange); 
+}
+
+.inventory-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.2rem;
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.7rem;
+}
+
+.item-name {
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 80%;
+}
+
+.item-qty {
+  color: var(--elite-blue);
+  font-weight: bold;
+}
+
+/* Remove animation and replace with static gradient */
+.progress-bar-inner {
+  height: 100%;
+  background: linear-gradient(90deg, var(--ed-orange) 0%, #FFD700 100%);
+  width: 0%;
+  /* Remove animation */
+  animation: none;
+}
+
+/* Enhance power icon */
+.power-icon {
+  width: 1.8rem;
+  height: 1.8rem;
+  margin-right: 0.5rem;
+  border: 1px solid var(--ed-orange);
+  border-radius: 50%;
+  background-color: var(--light-bg);
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 0 3px rgba(255, 165, 0, 0.5);
+}
+
+/* Enhance gradient for progress bar */
+.progress-bar-inner {
+  background: linear-gradient(90deg, 
+      var(--ed-orange) 0%, 
+      #FFD700 50%, 
+      var(--elite-blue) 100%);
+  transition: width 0.5s ease-out;
+}
+
+/* Better styling for the progress counter */
+.progress-counter {
+  color: var(--elite-blue);
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+/* Add some subtle shading to activity bars */
+.activity-bar.trading {
+  background: linear-gradient(90deg, rgba(62, 253, 113, 0.8) 0%, rgba(0, 162, 255, 0.8) 100%);
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+.activity-bar.bounty {
+  background: linear-gradient(90deg, rgba(255, 215, 0, 0.8) 0%, rgba(255, 113, 0, 0.8) 100%);
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+.activity-bar.combat {
+  background: linear-gradient(90deg, rgba(255, 0, 0, 0.8) 0%, rgba(139, 0, 0, 0.8) 100%);
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+.activity-bar.fortification {
+  background: linear-gradient(90deg, rgba(128, 0, 128, 0.8) 0%, rgba(75, 0, 130, 0.8) 100%);
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+.activity-bar.other {
+  background: linear-gradient(90deg, rgba(136, 136, 136, 0.8) 0%, rgba(68, 68, 68, 0.8) 100%);
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Improve widget-toggle styling */
+.widget-toggle {
+  text-align: right;
+  margin-top: 0.4rem;
+}
+
+/* Improve widget header */
+.widget-header {
+  background: linear-gradient(90deg, 
+      rgba(255, 165, 0, 0.2) 0%, 
+      rgba(255, 165, 0, 0.1) 100%);
+}
+
+/* Add separator lines between sections */
+.merit-stats, .merit-breakdown, .progress-section, .inventory-section {
+  position: relative;
+}
+
+.merit-stats::after, .merit-breakdown::after, .progress-section::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  width: 90%;
+  height: 1px;
+  background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(255, 165, 0, 0.3) 20%, 
+      rgba(255, 165, 0, 0.3) 80%, 
+      transparent 100%);
+}
+
+/* Additional styles for the updated PowerPlay widget */
+
+/* Make the widget header more compact and flexible */
+.widget-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.3rem;
+  background-color: rgba(255, 165, 0, 0.1);
+  border-bottom: 1px solid var(--ed-orange);
+}
+
+/* Container for the power info and icon */
+.power-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0.5;
+}
+
+/* Container for the compact merit stats and toggle button */
+.power-stat-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-left: auto;
+}
+
+/* Compact merit stats displayed in the header */
+.merit-stats-compact {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.2rem;
+}
+
+.merit-box-compact {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.merit-label-compact {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  margin-right: 0.2rem;
+}
+
+.merit-value-compact {
+  font-size: 0.8rem;
+  color: var(--ed-orange);
+  font-weight: 600;
+}
+
+/* Toggle button styles */
+.toggle-button {
+  font-size: 0.65rem;
+  padding: 0.1rem 0.25rem;
+  margin-top: 0.1rem;
+}
+
+/* Ensure power icon stays a good size */
+.power-icon {
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+  margin-right: 0.5rem;
+}
+
+/* Remove the old merit stats section since it's now in the header */
+.merit-stats {
+  display: none;
+}
+
+/* Enhanced inventory item display with merit value */
+.inventory-item {
+  display: grid;
+  grid-template-columns: 4fr 1fr 2fr;
+  gap: 0.3rem;
+  margin-bottom: 0.2rem;
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.7rem;
+}
+
+.item-name {
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item-qty {
+  color: var(--elite-blue);
+  font-weight: bold;
+  text-align: center;
+}
+
+.item-value {
+  color: var(--ed-orange);
+  text-align: right;
+}
+
+/* Make the merit breakdown more compact */
+.merit-breakdown {
+  margin-bottom: 0.4rem;
+  padding-bottom: 0.3rem;
+}
+
+.breakdown-item {
+  margin-bottom: 0.15rem;
+}
+
+/* More compact progress section */
+.progress-section {
+  margin-bottom: 0.4rem;
+}
+
+/* Increase contrast of merit values for better readability */
+.activity-value {
+  font-weight: bold;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+}
+
+/* Make inventory section more compact but still readable */
+.inventory-section {
+  margin-bottom: 0.3rem;
+}
+
+.inventory-list {
+  max-height: 6rem;
+}
+
+/* Make the widget footer smaller and less obtrusive */
+.widget-footer {
+  padding: 0.1rem 0.2rem;
+  font-size: 0.55rem;
+}
+/* Additional styles for the updated PowerPlay widget */
+
+/* PowerPlay header with title and toggle button */
+.powerplay-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.25rem;
+  background-color: rgba(255, 165, 0, 0.1);
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px 3px 0 0;
+}
+
+.powerplay-header h3 {
+  margin: 0;
+  padding: 0;
+  font-size: 0.85rem;
+  line-height: 1.1;
+}
+
+.toggle-button {
+  font-size: 0.65rem;
+  padding: 0.1rem 0.3rem;
+  margin-left: 0.5rem;
+}
+
+/* Make the widget header more compact and flexible */
+.widget-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.3rem;
+  background-color: rgba(255, 165, 0, 0.1);
+  border-bottom: 1px solid var(--ed-orange);
+}
+
+/* Container for the power info and icon */
+.power-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0.5;
+}
+
+/* Container for the compact merit stats */
+.power-stat-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-left: auto;
+}
+
+/* Compact merit stats displayed in the header */
+.merit-stats-compact {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.merit-box-compact {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.merit-label-compact {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  margin-right: 0.2rem;
+}
+
+.merit-value-compact {
+  font-size: 0.8rem;
+  color: var(--ed-orange);
+  font-weight: 600;
+}
+
+/* Ensure power icon stays a good size */
+.power-icon {
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+  margin-right: 0.5rem;
+}
+
+/* Remove the old merit stats section since it's now in the header */
+.merit-stats {
+  display: none;
+}
+
+/* Enhanced inventory item display with merit value */
+.inventory-item {
+  display: grid;
+  grid-template-columns: 4fr 1fr 2fr;
+  gap: 0.3rem;
+  margin-bottom: 0.2rem;
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.7rem;
+}
+
+.item-name {
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item-qty {
+  color: var(--elite-blue);
+  font-weight: bold;
+  text-align: center;
+}
+
+.item-value {
+  color: var(--ed-orange);
+  text-align: right;
+}
+
+/* Make the merit breakdown more compact */
+.merit-breakdown {
+  margin-bottom: 0.4rem;
+  padding-bottom: 0.3rem;
+}
+
+.breakdown-item {
+  margin-bottom: 0.15rem;
+}
+
+/* More compact progress section */
+.progress-section {
+  margin-bottom: 0.4rem;
+}
+
+/* Increase contrast of merit values for better readability */
+.activity-value {
+  font-weight: bold;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+}
+
+/* Make inventory section more compact but still readable */
+.inventory-section {
+  margin-bottom: 0.3rem;
+}
+
+.inventory-list {
+  max-height: 6rem;
+}
+
+/* Make the widget footer smaller and less obtrusive */
+.widget-footer {
+  padding: 0.1rem 0.2rem;
+  font-size: 0.55rem;
+}
+
+/* Import Elite Dangerous themed font */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quantico:wght@400;700&display=swap');
+
+/* Base styles */
+:root {
+  --ed-orange: #FF7100;
+  --ed-blue: #009CDF;
+  --dark-bg: #090A0C;
+  --mid-bg: #14151A;
+  --light-bg: #1E2025;
+  --text-primary: var(--ed-orange);
+  --text-secondary: #D0D0D0;
+  --accent-blue: var(--ed-blue);
+  --accent-red: #e74c3c;
+  --border-color: #333340;
+  --spacing-xs: 0.15rem;
+  --spacing-sm: 0.25rem;
+  --spacing-md: 0.4rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--dark-bg);
+  color: var(--text-primary);
+  font-family: 'Quantico', 'Rajdhani', sans-serif;
+  line-height: 1.2;
+  padding: var(--spacing-sm);
+  font-size: 10px;
+  letter-spacing: 0.02rem;
+}
+
+h1, h2, h3, h4, h5, h6, .title, .power-name {
+  font-family: 'Orbitron', 'Rajdhani', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
+.container {
+  max-width: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+/* More compact header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-sm);
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.title {
+  font-size: 1.1rem;
+  margin-bottom: var(--spacing-xs);
+  font-weight: 700;
+  color: var(--ed-orange);
+}
+
+.status, .power-status {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* PowerPlay header with title and toggle button */
+.powerplay-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0;
+  background-color: rgba(255, 113, 0, 0.15);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: 3px 3px 0 0;
+  border-bottom: 1px solid var(--ed-orange);
+}
+
+.powerplay-header h3 {
+  margin: 0;
+  padding: 0;
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+.toggle-button {
+  font-size: 0.6rem;
+  padding: 0.08rem 0.25rem;
+  margin-left: 0.4rem;
+  line-height: 1;
+  font-family: 'Quantico', sans-serif;
+}
+
+/* Make the widget header more compact */
+.widget-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-sm);
+  background: linear-gradient(90deg, rgba(255, 113, 0, 0.2) 0%, rgba(255, 113, 0, 0.05) 100%);
+  border-bottom: 1px solid var(--ed-orange);
+}
+
+/* Container for the power info and icon */
+.power-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0.5;
+}
+
+.power-name {
+  font-size: 0.8rem;
+  line-height: 1;
+  color: var(--ed-orange);
+}
+
+.power-level {
+  font-size: 0.7rem;
+  line-height: 1;
+  margin-top: var(--spacing-xs);
+}
+
+/* Container for the compact merit stats */
+.power-stat-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-left: auto;
+}
+
+/* Compact merit stats displayed in the header */
+.merit-stats-compact {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.merit-box-compact {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.merit-label-compact {
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+  margin-right: 0.15rem;
+}
+
+.merit-value-compact {
+  font-size: 0.75rem;
+  color: var(--ed-orange);
+  font-weight: 600;
+}
+
+/* Condensed power icon */
+.power-icon {
+  width: 1.8rem;
+  height: 1.8rem;
+  flex-shrink: 0;
+  margin-right: 0.4rem;
+  border: 1px solid var(--ed-orange);
+  box-shadow: 0 0 4px rgba(255, 113, 0, 0.4);
+  border-radius: 50%;
+}
+
+/* Remove the old merit stats section */
+.merit-stats {
+  display: none;
+}
+
+/* More compact widget content */
+.widget-content {
+  padding: var(--spacing-sm);
+}
+
+/* Enhanced inventory item display with merit value */
+.inventory-item {
+  display: grid;
+  grid-template-columns: 4fr 1fr 2fr;
+  gap: 0.25rem;
+  margin-bottom: 0.15rem;
+  padding-bottom: 0.15rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.6rem;
+  line-height: 1.1;
+}
+
+.inventory-total {
+  border-top: 1px solid var(--ed-orange);
+  border-bottom: none;
+  margin-top: 0.25rem;
+  padding-top: 0.15rem;
+  font-weight: bold;
+}
+
+.item-name {
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item-qty {
+  color: var(--ed-blue);
+  font-weight: bold;
+  text-align: center;
+}
+
+.item-value {
+  color: var(--ed-orange);
+  text-align: right;
+}
+
+/* More compact merit breakdown */
+.merit-breakdown {
+  margin-bottom: 0.3rem;
+  padding-bottom: 0.2rem;
+}
+
+.breakdown-title {
+  color: var(--text-secondary);
+  font-size: 0.65rem;
+  margin-bottom: 0.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.breakdown-item {
+  margin-bottom: 0.12rem;
+}
+
+.activity-label {
+  width: 5rem;
+  font-size: 0.65rem;
+  color: #fff;
+}
+
+.activity-bar-container {
+  height: 0.8rem;
+}
+
+/* More compact progress section */
+.progress-section {
+  margin-bottom: 0.3rem;
+}
+
+.progress-header {
+  font-size: 0.6rem;
+  margin-bottom: 0.15rem;
+}
+
+.progress-title {
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.05rem;
+}
+
+.progress-bar-outer {
+  height: 0.5rem;
+}
+
+/* Inventory section header */
+.inventory-title {
+  color: var(--text-secondary);
+  font-size: 0.65rem;
+  margin-bottom: 0.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.inventory-list {
+  max-height: 5.5rem;
+}
+
+/* Smaller widget footer */
+.widget-footer {
+  padding: 0.08rem 0.15rem;
+  font-size: 0.5rem;
+}
+
+/* Condensed tables throughout the app */
+.table-wrapper {
+  margin-bottom: var(--spacing-sm);
+}
+
+.table-header {
+  padding: var(--spacing-xs) var(--spacing-sm);
+}
+
+.table-header h2 {
+  font-size: 0.8rem;
+}
+
+.data-table th {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: 0.7rem;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.data-table td {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: 0.7rem;
+}
+
+/* Improving the Elite Dangerous aesthetic with subtle glow effects */
+.power-name, .title, h3, .powerplay-header h3 {
+  text-shadow: 0 0 5px rgba(255, 113, 0, 0.5);
+}
+
+.inventory-total .item-value {
+  text-shadow: 0 0 4px rgba(255, 113, 0, 0.7);
+}
+
+.toggle-button, .button {
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  font-family: 'Quantico', sans-serif;
+  transition: all 0.15s ease;
+}
+
+.button:hover {
+  box-shadow: 0 0 5px rgba(255, 113, 0, 0.7);
+}
+
+/* Elite Dangerous style progress bar */
+.progress-bar-inner {
+  background: linear-gradient(90deg, 
+      var(--ed-orange) 0%, 
+      #FFB300 50%, 
+      var(--ed-blue) 100%);
+  box-shadow: 0 0 5px rgba(255, 113, 0, 0.5);
+}
+
+/* Elite Dangerous style activity bars */
+.activity-bar.trading {
+  background: linear-gradient(90deg, rgba(0, 156, 223, 0.8) 0%, rgba(0, 200, 255, 0.8) 100%);
+  box-shadow: inset 0 0 3px rgba(0, 156, 223, 0.5);
+}
+
+.activity-bar.bounty {
+  background: linear-gradient(90deg, rgba(255, 113, 0, 0.8) 0%, rgba(255, 179, 0, 0.8) 100%);
+  box-shadow: inset 0 0 3px rgba(255, 113, 0, 0.5);
+}
+
+.activity-bar.combat {
+  background: linear-gradient(90deg, rgba(231, 76, 60, 0.8) 0%, rgba(192, 57, 43, 0.8) 100%);
+  box-shadow: inset 0 0 3px rgba(231, 76, 60, 0.5);
+}
+
+.activity-bar.fortification {
+  background: linear-gradient(90deg, rgba(142, 68, 173, 0.8) 0%, rgba(91, 44, 111, 0.8) 100%);
+  box-shadow: inset 0 0 3px rgba(142, 68, 173, 0.5);
+}
+
+.activity-bar.other {
+  background: linear-gradient(90deg, rgba(127, 140, 141, 0.8) 0%, rgba(52, 73, 94, 0.8) 100%);
+  box-shadow: inset 0 0 3px rgba(127, 140, 141, 0.5);
+}
+
+/* Make the grid items more compact */
+.grid-container {
+  gap: 0.2rem;
+}
+
+.grid-item {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.grid-item:hover {
+  box-shadow: 0 0 5px rgba(255, 113, 0, 0.5);
+}
+
+.card-image {
+  height: 80px;
+}
+
+.card-title {
+  font-size: 0.75rem;
+  color: var(--ed-orange);
+  text-transform: capitalize;
+}
+
+.card-text {
+  font-size: 0.6rem;
+}
