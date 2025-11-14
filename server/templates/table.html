@@ -35,9 +35,10 @@
         <div class="controls">
           <button class="button small danger" id="clearDataButton">Clear</button>
           <div class="layout-toggle">
-            <button class="button small active" id="desktopButton" onclick="switchLayout('default')">Desktop</button>
+            <button class="button small" id="desktopButton" onclick="switchLayout('default')">Desktop</button>
             <button class="button small" id="mobileButton" onclick="switchLayout('mobile')">Mobile</button>
           </div>
+          <button class="button small active" onclick="document.querySelector('html').webkitRequestFullscreen()">Fullscreen</button>
         </div>
         <div class="tabs" id="mobiletabs" style="display: none;">
           <button class="button" onclick="openTab(event, 'killsTablePlaceholderMobile')">Kills Table</button>
