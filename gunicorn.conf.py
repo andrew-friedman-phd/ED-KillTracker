@@ -1,12 +1,13 @@
 # gunicorn.conf.py
+import os
 
 #
 # Basic Gunicorn configuration for a single-user Flask-SocketIO app
 # using the threading async mode. This uses Gunicorn's default port (8000).
 #
 
-# Bind to all interfaces on default port 8000
-bind = "0.0.0.0:8000"
+# Bind to all interfaces on default port 8080
+bind = f"0.0.0.0:{os.environ.get('PORT', '8080')}"
 
 # Single worker is sufficient since it's just you using the app
 workers = 1
