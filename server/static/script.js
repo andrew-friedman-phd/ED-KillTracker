@@ -10,7 +10,7 @@
 // ======================================================================
 
 // Socket connection setup
-const socket = io.connect('http://' + document.domain + ':' + location.port);
+const socket = io();
 
 // Data storage
 let killDataList = [];        // Stores all kill data
