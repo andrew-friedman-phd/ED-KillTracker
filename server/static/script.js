@@ -268,6 +268,7 @@ function handleNewKillData(killData) {
 }
 
 function handleNewMissionData(missionData) {
+  console.log(missionData);
   if (missionData.isMassacre) {
     addMissionToDataModel(missionData);
     renderMissionsTable();
