@@ -6,7 +6,7 @@ import os
 import logging
 from datetime import datetime
 
-app = Flask(__name__)
+app = Flask(__name__,template_folder='server/templates',static_folder='server/static')
 CORS(app)  # Enable CORS for all routes
 # Fix for threading issues - don't use eventlet
 socketio = SocketIO(app, async_mode='threading')
